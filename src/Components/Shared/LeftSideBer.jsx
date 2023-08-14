@@ -7,6 +7,8 @@ import { decodeToken } from '../../Hook/decodeToken';
 import CreatePost from '../CommonComponents/Post/CreatePost';
 import CreateNote from '../CommonComponents/Note/CreateNote';
 import MyNote from '../CommonComponents/Note/MyNote';
+import { GetProfile } from '../../api/GetProfile';
+
 
 
 function LeftSideBer() {
@@ -38,23 +40,19 @@ function LeftSideBer() {
    }
 
   useEffect(() => {
-    const token = getToken('accessToken')
-    const data = decodeToken(token)
-    api.get(`/api/v1/user/me/${data.userId}`)
-    .then((response) => {
+    const fatchData = async () => {
+      const data = await GetProfile()
       setUserInfo({
-        profileImage: response.data.data.profilephoto[0],
-        fullName: response.data.data.fullname,
-        tittle: response.data.data.tittle,
+        profileImage: data.profilephoto,
+        fullName: data.fullname,
+        tittle: data.tittle,
       });
-    })
-    .catch((error) => {
-      if (error) {
-        // console.log(error)
-      }
-    })
+    }
+
+    fatchData()
   }, []); 
 
+  const coverImagee = false;
   return (
     <>
     {createboxshow && <CreatePost 
@@ -65,8 +63,9 @@ function LeftSideBer() {
     />}
     {showmynoteboxalert && <MyNote />}
 
-      <div className='col-span-2 h-screen text-zinc-50 p-4 bg-slate-900'>
+      <div className='col-span-2 text-zinc-50 p-4 bg-slate-900'>
         <ProfileHeader
+          coverImage={coverImagee}
           profileImage={userInfo.profileImage}
           fullName={userInfo.fullName}
           tittle={userInfo.tittle}

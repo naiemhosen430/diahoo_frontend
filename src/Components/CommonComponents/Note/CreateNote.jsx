@@ -12,7 +12,7 @@ export default function CreateNote(props) {
           <input className='w-full rounded-md bg-black text-slate-400 p-4' type="text" id='notetittlr' placeholder='Write a note tittle' />
         </div>
         <div className='py-4'>
-          <label className='text-white p-4' htmlFor="notedes">Write note tittlr</label>
+          <label className='text-white p-4' htmlFor="notedes">Write your note</label>
           <textarea className='w-full rounded-md bg-black text-slate-400 p-4' name="notedes" id="notedes" cols="20" rows="5" placeholder='Start writting....'></textarea>
         </div>
         <div>

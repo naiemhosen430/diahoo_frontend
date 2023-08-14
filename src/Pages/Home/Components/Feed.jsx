@@ -1,44 +1,30 @@
-import React, { useEffect, useState } from 'react'
-import Post from '../../../Components/CommonComponents/Post/Post'
-import api from '../../../api/api'
+import React, { useEffect, useState } from 'react';
+import api from '../../../api/api';
+import Post from '../../../Components/CommonComponents/Post/Post';
 
 export default function Feed() {
+  const [post, setPost] = useState([]);
 
-  const [post, setPost] = useState([])
-
-
-  useEffect(() => {
+  useEffect( () => {
     api.get('api/v1/post/')
-    .then(response => {
-      if (response) {
-          setPost(response.data.data)
-      }
-    })
-    .catch(Error => {
-      if (Error) {
-        console.log(Error)
-      }
-    })
-
-  }, [])
+      .then((response) => {
+        if (response) {
+          setPost(response.data.data);
+        }
+      })
+      .catch((error) => {
+        if (error) {
+          console.log(error);
+        }
+      });
+  }, []);
 
 
   return (
-    <div className='mx-2 h-screen bg-slate-900'>
-      {
-        
-        post.map((post) => (
-          <Post 
-            key={post._id} 
-            postOwnerImage={post.postOwnerImage}
-            postOwnerName={post.postOwnerName}
-            postedDate={post.postedDate}
-            postTitle={post.postTitle} // Corrected "postTittle" to "postTitle"
-            postImage={post.postImage}
-          />
-        ))
-      }
+    <div className='mx-2 bg-slate-900'>
+      {post.map((postItem) => (
+        <Post key={postItem._id} post={postItem} />
+      ))}
     </div>
   );
-
 }

@@ -7,7 +7,7 @@ import { AiTwotoneSetting } from "react-icons/ai";
 function Menu() {
     return (
         <>
-            <section className="py-2 px-4">
+            <section className="sticky top-0">
                 <h1 className="flex items-center py-2 px-4 bg-slate-900">
                     <span className="block text-3xl w-1/6 text-white bolder text-3lg">diahoo</span>
                     <div className="w-3/6">

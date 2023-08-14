@@ -35,14 +35,11 @@ export default function CreatePost(props) {
   const SubmitPost = async () => {
     const token = getToken('accessToken');
     const data = decodeToken(token);
-
-    console.log(postData)
   
     await api
       .post(`/api/v1/post/create/${data.userId}`, postData)
       .then((response) => {
         if (response) {
-          console.log(response.data);
         }
       })
       .catch((error) => {
