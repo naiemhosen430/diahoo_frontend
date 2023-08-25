@@ -9,45 +9,67 @@ import Profile from "../Pages/Profile/Profile";
 import Message from "../Pages/Message/Message";
 import Friend from "../Pages/Friend/Friend";
 import Setting from "../Pages/Setting/Setting";
-
-
+import PublicProfile from "../Pages/PublicProfile/PublicProfile";
+import Search from "../Pages/Search/Search";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <PrivateRoute> <Main /> </PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        {" "}
+        <Main />{" "}
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/",
-        element: <Home />
+        element: <Home />,
       },
       {
-        path: "/profile",
-        element: <Profile />
+        path: "/myprofile",
+        element: <Profile />,
       },
       {
-        path: "/message",
-        element: <Message />
+        path: "/message/:myid",
+        element: <Message />,
       },
       {
         path: "/friend",
-        element: <Friend />
+        element: <Friend />,
       },
       {
         path: "/setting",
-        element: <Setting />
+        element: <Setting />,
       },
-    ]
+      {
+        path: "/profile/:id",
+        element: <PublicProfile />,
+      },
+      {
+        path: "/search/:text",
+        element: <Search />,
+      },
+    ],
   },
   {
     path: "/register",
-    element: <StopLoginRoute> <Register /> </StopLoginRoute>,
+    element: (
+      <StopLoginRoute>
+        {" "}
+        <Register />{" "}
+      </StopLoginRoute>
+    ),
   },
   {
     path: "/login",
-    element: <StopLoginRoute> <Login /> </StopLoginRoute>
-  }
+    element: (
+      <StopLoginRoute>
+        {" "}
+        <Login />{" "}
+      </StopLoginRoute>
+    ),
+  },
 ]);
 
-
-export default router
+export default router;

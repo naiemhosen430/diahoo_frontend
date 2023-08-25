@@ -5,7 +5,7 @@ const handleSubboxClick = (event) => {
 
 export default function CreateNote(props) {
   return (
-    <div  className='backdrop-blur-xl bg-b py-20 fixed w-screen h-screen' onClick={props.closecreatenotebox}>
+    <div  className='backdrop-blur-xl z-10 bg-b py-20 fixed w-screen h-screen' onClick={props.closecreatenotebox}>
       <form className='w-3/6 m-auto p-4 bg-slate-900' onClick={handleSubboxClick}>
         <div>
           <label className='text-white p-4' htmlFor="notetittle">Write note tittle</label>

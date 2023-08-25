@@ -1,44 +1,45 @@
 // Components/CommonComponents/Post/Post.js
 
-import React, { useEffect, useState } from 'react';
-import PostHeader from './Components/PostHeader';
-import PostFooter from './Components/PostFooter';
-import api from '../../../api/api';
+import React, { useEffect, useState } from "react";
+import PostHeader from "./Components/PostHeader";
+import PostFooter from "./Components/PostFooter";
+import api from "../../../api/api";
+import GetPublicProfile from "../../../api/GetPublicProfile";
 
 const Post = ({ post }) => {
-
   const [user, setUser] = useState({
-    profilephoto: '',
-    fullname: ''
-  })
+    profilephoto: "",
+    fullname: "",
+    id: "",
+  });
 
-  useEffect( () => {
-    api.get(`/api/v1/user/${post.postownerid}`)
-    .then((response) => {
-      if(response) {
+  useEffect(() => {
+    const fatchData = async () => {
+      try {
+        const data = await GetPublicProfile(post.postownerid);
         setUser({
-          profilephoto: response.data.data.profilephoto,
-          fullname: response.data.data.fullname
-        })
+          profilephoto: data.profilephoto,
+          fullname: data.fullname,
+          id: data._id,
+        });
+      } catch (error) {
+        console.log(error);
       }
-    })
-    .catch((error) => {
-      if (error) {
-        console.log(error)
-      }
-    })
-  }, [post.postownerid])
+    };
+
+    fatchData();
+  }, [post.postownerid]);
 
   return (
-    <div className='post'>
-      <PostHeader 
+    <div className="post">
+      <PostHeader
         postOwnerName={user.fullname}
-        postOwnerid={user._id}
+        postOwnerid={user.id}
         postOwnerPicture={user.profilephoto}
         postedtime={post.createdAt}
       />
-      <p className='text-white text-sm p-4'>{post.postcontent}</p>
-      <PostFooter 
+      <p className="text-white text-sm p-4">{post.postcontent}</p>
+      <PostFooter
         postOwnerName={user.fullname}
         likes={post.like}
         comments={post.comment}

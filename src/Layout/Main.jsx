@@ -1,19 +1,24 @@
-import {Outlet} from 'react-router-dom'
-import Menu from '../Components/Shared/Menu'
-import LeftSideBer from '../Components/Shared/LeftSideBer'
-import RightSideBer from '../Components/Shared/RightSideBer'
+import { Outlet } from "react-router-dom";
+import Menu from "../Components/Shared/Menu";
+import LeftSideBer from "../Components/Shared/LeftSideBer";
+import RightSideBer from "../Components/Shared/RightSideBer";
+import { useEffect } from "react";
+import connectIo from "../api/connectIo";
 
 function Main() {
-    return (
-        <>
-            <Menu />
-            <div className='grid grid-cols-7 p-4'>
-                <LeftSideBer />
-                <Outlet />
-                <RightSideBer />
-            </div>
-        </>
-    )
+  useEffect(() => {
+    connectIo();
+  }, [connectIo]);
+  return (
+    <>
+      <Menu />
+      <div className="grid grid-cols-7 p-4">
+        <LeftSideBer />
+        <Outlet />
+        <RightSideBer />
+      </div>
+    </>
+  );
 }
 
-export default Main
+export default Main;

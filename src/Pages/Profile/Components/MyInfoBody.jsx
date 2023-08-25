@@ -41,7 +41,7 @@ export default function MyInfoBody() {
             ...prevEditableFields,
             [field]: false,
         }));
-        await api.put(`/api/v1/me/edit/${user._id}`, user)
+        await api.put(`/api/v1/user/me/edit/${user._id}`, user)
         .then(response => {
             if (response) {
                 console.log(response)
@@ -52,7 +52,6 @@ export default function MyInfoBody() {
                 console.log(error)
             }
         })
-        console.log(user)
     };
 
     return (
