@@ -75,9 +75,9 @@ function LoginForm() {
               type="button"
               value="Login"
             />
-            <h1 className="px-5">
+            <h1 className="lg:px-5 px-2">
               <Link
-                className="text-slate-500 hover:text-white hover:underline"
+                className="text-slate-500 lg:text-sm text-xs hover:text-white hover:underline"
                 to={"/resetpassword"}
               >
                 Forgotten password?
