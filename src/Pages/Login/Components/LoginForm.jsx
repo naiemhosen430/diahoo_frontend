@@ -34,10 +34,10 @@ function LoginForm() {
 
   return (
     <>
-      <div className="lg:w-6/12 lg:p-20 p-5">
+      <div className="lg:w-6/12 lg:p-20 lg:py-0 p-5">
         <p className="text-center text-white m-4">{err}</p>
-        <form className="bg-slate-900 rounded-lg p-5 m-auto">
-          <h1 className="text-3xl py-10 text-slate-400 p-4 font-bold text-center">
+        <form className="bg-slate-900 rounded-lg p-10 m-auto">
+          <h1 className="text-3xl py-10 pt-0 text-slate-400 p-4 font-bold text-center">
             Login here
           </h1>
           <label className="block mx-2 text-xl text-slate-200" htmlFor="email">
@@ -70,17 +70,34 @@ function LoginForm() {
           />
           <div className="flex items-center">
             <input
-              className="text-2xl px-5 py-2 bg-slate-800 rounded-lg cursor-pointer text-white font-bold"
+              className="text-xl px-5 py-2 bg-slate-800 rounded-lg cursor-pointer text-white font-bold"
               onClick={handleSubmit}
               type="button"
               value="Login"
             />
-            <h1 className="px-10">
+            <h1 className="px-5">
               <Link
                 className="text-slate-500 hover:text-white hover:underline"
                 to={"/resetpassword"}
               >
                 Forgotten password?
+              </Link>
+            </h1>
+          </div>
+
+          <div className="flex items-center p-10 text-white font-bold">
+            <div className="h-1 w-5/12 bg-slate-800"></div>
+            <h1 className="px-5">Or</h1>
+            <div className="h-1 w-5/12 bg-slate-800"></div>
+          </div>
+
+          <div className="text-center">
+            <h1 className="px-5">
+              <Link
+                className="text-white bg-slate-800 shadow-2xl p-2 px-4 rounded-2xl hover:text-white hover:underline"
+                to={"/resetpassword"}
+              >
+                Create an account now?
               </Link>
             </h1>
           </div>
