@@ -34,7 +34,7 @@ function LoginForm() {
 
   return (
     <>
-      <div className="lg:w-6/12 lg:p-20 lg:py-0 p-5">
+      <div className="lg:w-6/12 lg:p-20 lg:py-0">
         <p className="text-center text-white m-4">{err}</p>
         <form className="bg-slate-900 rounded-lg p-10 px-5 m-auto">
           <h1 className="text-3xl py-10 pt-0 text-slate-400 p-4 font-bold text-center">
