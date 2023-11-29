@@ -36,7 +36,7 @@ function LoginForm() {
     <>
       <div className="lg:w-6/12 lg:p-20 lg:py-0 p-5">
         <p className="text-center text-white m-4">{err}</p>
-        <form className="bg-slate-900 rounded-lg p-10 m-auto">
+        <form className="bg-slate-900 rounded-lg p-10 px-5 m-auto">
           <h1 className="text-3xl py-10 pt-0 text-slate-400 p-4 font-bold text-center">
             Login here
           </h1>
@@ -94,7 +94,7 @@ function LoginForm() {
           <div className="text-center">
             <h1 className="px-5">
               <Link
-                className="text-white bg-slate-800 shadow-2xl p-2 px-4 rounded-2xl hover:text-white hover:underline"
+                className="text-white text-sm bg-slate-800 shadow-2xl p-2 px-4 rounded-2xl hover:text-white hover:underline"
                 to={"/resetpassword"}
               >
                 Create an account now?
